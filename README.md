@@ -1,50 +1,32 @@
-# Car Collection System
+# Car Collection System – Prestige Dealership
 
-A modern, responsive, automotive dealership and car collection management web and mobile application.
-
----
-
-## 🛠 Root Cause of Vercel 404 NOT_FOUND & The Permanent Fix
-
-### Exact Cause of the Error:
-1. **Missing Web Entry Point:** The repository root previously lacked a web entry point (`index.html`), `package.json`, and Vite build configuration. When deployed to Vercel, the platform found no web entry file to build or serve, leading to `404: NOT_FOUND`.
-2. **Missing SPA Rewrites:** Without a `vercel.json` rewrite configuration (`{ "source": "/(.*)", "destination": "/index.html" }`), any direct navigation or page refresh on client routes (such as `/dashboard`, `/cars`, `/add`, `/contact`) causes Vercel's static router to look for a physical directory and return HTTP 404 NOT_FOUND.
-
-### The Permanent Fix Applied:
-1. **Configured `index.html` at the Root:** Created the standard Vite HTML entry point with `#root` container linking to `/src/main.jsx`.
-2. **Configured `package.json` & Vite:** Configured dependencies (`react`, `react-dom`, `lucide-react`) and standard build scripts (`"build": "vite build"` producing `dist/`).
-3. **Configured `vercel.json`:**
-   ```json
-   {
-     "framework": "vite",
-     "buildCommand": "npm run build",
-     "outputDirectory": "dist",
-     "rewrites": [
-       {
-         "source": "/(.*)",
-         "destination": "/index.html"
-       }
-     ]
-   }
-   ```
-4. **Vite Production Build Verified:** `npm run build` generates the complete `dist/` directory containing `dist/index.html` and bundled assets.
+A modern, luxury automotive dealership and fleet inventory management web application built with React, Vite, and Tailwind CSS.
 
 ---
 
-## 🚀 Features
+## 🛠 Project Overview & Vercel Deployment Fixes
 
-* **Home & Showcase Landing:** Hero header, live fleet metrics, featured supercars spotlight, quick actions.
-* **Dashboard:** Real-time fleet metrics (Total Fleet, Available Units, Sold Units, Total Valuation in $M), inventory readiness bars, and powertrain distribution (Electric, Hybrid, Petrol).
-* **Inventory Management (Full CRUD):**
-  * Real-time search across Brand, Model, Registration, and Color.
-  * Filters for Brand, Fuel Type, and Availability Status.
-  * Sorting by Price (High/Low) and Year (Newest/Oldest).
-  * Dual View Modes: Grid Cards vs. Compact Table.
-  * Add & Edit Vehicle forms with validation and HD preset photo picker.
-  * Delete vehicle with confirmation safety modal.
-* **Vehicle Details:** Comprehensive modal with full specifications, curator notes, and quick status lifecycle switches (*Available*, *Sold*, *Reserved*).
-* **Contact Showroom:** Showroom headquarters address, direct telephone lines, and functional inquiry form.
-* **404 Route Recovery:** Built-in route fallback for unrecognized paths.
+### 1. UI Design & Styling Fixes
+* **Luxury Automotive Theme:** Dark navy background (`#070D19`, `#0B1325`), crisp white text, and metallic gold accents (`#D4AF37`, `#F3C952`).
+* **Fixed Aspect Ratio Vehicle Previews:** Vehicle photos now strictly use a fixed-height container (`h-56`) with `object-fit: cover` and centered alignment, permanently resolving oversized preview images.
+* **Button Style Normalization:** Removed default browser button appearances with custom `.btn-gold`, `.btn-secondary`, `.btn-reset`, and `.btn-danger` classes with subtle elevation, hover states, and ripples.
+* **Responsive Layouts:** Full desktop, tablet, and mobile support with responsive navigation, fluid grids, and slide-down mobile menus.
+
+### 2. Required Pages
+1. **Home:** Prestige showroom hero banner, live fleet metrics, featured supercars spotlight, quick navigation.
+2. **Dashboard:** Real-time fleet metrics (Total Fleet, Available, Sold, Total Valuation in $M), availability readiness bars, and powertrain classifications (Electric, Hybrid, Petrol, Diesel).
+3. **View Cars:** Search by brand, model, registration, or color; filter by Brand, Fuel, and Status; sort by price/year; and switch between Grid Cards and Table views.
+4. **Add New Vehicle to Fleet:**
+   * Prominent heading: **“Add New Vehicle to Fleet”**.
+   * Fixed aspect ratio photo preview with `object-fit: cover`.
+   * Fields: Car Title, Brand, Model, Year, Price, Mileage, Fuel Type, Transmission, Color, Registration Number, and Image URL or Local Upload.
+   * Actions: **Save Vehicle**, **Reset**, and **Cancel**.
+   * Live validation with error handling and success notifications.
+5. **Contact:** Showroom headquarters address, direct telephone lines, business hours, and functional inquiry submission form.
+6. **Staff Portal (Login):** Demo profile switcher for Collection Director (Alexander Vance) and Acquisitions Specialist (Sarah Connor).
+
+### 3. Vercel SPA Routing Configuration
+* `vercel.json` rewrite routing configured to direct all paths (`/(.*)`) to `/index.html`, eliminating 404 errors on page refresh.
 
 ---
 
@@ -54,25 +36,21 @@ A modern, responsive, automotive dealership and car collection management web an
 # Install dependencies
 npm install
 
-# Run local development server (http://localhost:3000)
+# Run local development server
 npm run dev
 
-# Build for production
+# Production build
 npm run build
-
-# Preview production build
-npm run preview
 ```
 
 ---
 
-## 🌐 Vercel Deployment Guide
+## 🌐 Vercel Deployment Settings
 
-1. Push this repository to GitHub.
-2. In [Vercel](https://vercel.com), click **Add New** → **Project**.
-3. Select your repository.
-4. Verify the default settings:
-   * **Framework Preset:** Vite
-   * **Build Command:** `npm run build`
-   * **Output Directory:** `dist`
-5. Click **Deploy**.
+| Setting | Value |
+|---|---|
+| **Framework Preset** | `Vite` |
+| **Root Directory** | `./` |
+| **Build Command** | `npm run build` |
+| **Output Directory** | `dist` |
+| **Install Command** | `npm install` |

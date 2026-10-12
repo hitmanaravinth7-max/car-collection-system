@@ -1,47 +1,69 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+@import "tailwindcss";
 
 :root {
   --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  --font-display: 'Cinzel', serif;
   
-  --bg-dark: #0B1325;
-  --bg-surface: #101B33;
-  --bg-card: #182647;
-  --bg-card-hover: #1E315B;
-  --border-color: #233760;
-  --border-subtle: #1C2B4C;
+  --bg-navy-950: #070D19;
+  --bg-navy-900: #0B1325;
+  --bg-navy-850: #0F1A32;
+  --bg-navy-800: #142242;
+  --bg-navy-700: #1B2C54;
+  --border-navy: #223766;
+  --border-gold: #D4AF37;
   
-  --primary: #2563EB;
-  --primary-light: #38BDF8;
-  --primary-glow: rgba(37, 99, 235, 0.25);
+  --gold-500: #D4AF37;
+  --gold-400: #F3C952;
+  --gold-300: #FDE08A;
+  --gold-glow: rgba(212, 175, 55, 0.25);
   
-  --text-main: #F8FAFC;
-  --text-muted: #94A3B8;
-  --text-dim: #64748B;
+  --blue-accent: #2563EB;
+  --blue-light: #38BDF8;
   
-  --status-avail: #10B981;
-  --status-avail-bg: rgba(16, 185, 129, 0.15);
-  --status-sold: #EF4444;
-  --status-sold-bg: rgba(239, 68, 68, 0.15);
-  --status-reserved: #F59E0B;
-  --status-reserved-bg: rgba(245, 158, 11, 0.15);
-  --status-maint: #8B5CF6;
-  --status-maint-bg: rgba(139, 92, 246, 0.15);
+  --text-white: #FFFFFF;
+  --text-slate-200: #E2E8F0;
+  --text-slate-400: #94A3B8;
+  --text-slate-500: #64748B;
 }
 
-* {
+/* Global Reset */
+*, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-body {
+html, body {
+  background-color: var(--bg-navy-950);
+  color: var(--text-white);
   font-family: var(--font-sans);
-  background-color: var(--bg-dark);
-  color: var(--text-main);
   min-height: 100vh;
   line-height: 1.5;
-  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Clear default browser button appearance */
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+  transition: all 0.2s ease;
+}
+
+button:focus-visible {
+  outline: 2px solid var(--gold-400);
+  outline-offset: 2px;
+}
+
+/* Luxury Typography */
+.font-display {
+  font-family: var(--font-display);
+  letter-spacing: 0.05em;
 }
 
 /* Custom Scrollbar */
@@ -50,134 +72,168 @@ body {
   height: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--bg-dark);
+  background: var(--bg-navy-950);
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--border-color);
+  background: var(--border-navy);
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--primary);
+  background: var(--gold-500);
 }
 
-/* Glass & Card Utilities */
-.glass-panel {
-  background: rgba(16, 27, 51, 0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid var(--border-color);
-}
-
-.card {
-  background-color: var(--bg-card);
-  border: 1px solid var(--border-color);
-  border-radius: 16px;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.card:hover {
-  border-color: var(--primary);
-  box-shadow: 0 10px 30px -10px var(--primary-glow);
-}
-
-/* Button Utilities */
-.btn-primary {
-  background-color: var(--primary);
-  color: #ffffff;
-  padding: 10px 20px;
+/* Button Stylings */
+.btn-gold {
+  background: linear-gradient(135deg, #DFBA48 0%, #C99E25 100%);
+  color: #070D19;
+  font-weight: 700;
+  padding: 10px 22px;
   border-radius: 10px;
-  font-weight: 600;
-  font-size: 0.925rem;
+  font-size: 0.9rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  border: none;
-  cursor: pointer;
-  transition: all 0.2s ease;
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.25);
+  transition: all 0.25s ease;
+  border: 1px solid #FFE28A;
 }
-.btn-primary:hover {
-  background-color: #1D4ED8;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 16px var(--primary-glow);
+.btn-gold:hover {
+  background: linear-gradient(135deg, #F3C952 0%, #D4AF37 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(212, 175, 55, 0.4);
 }
 
 .btn-secondary {
-  background-color: transparent;
-  color: var(--text-main);
-  border: 1px solid var(--border-color);
+  background: #0F1A32;
+  color: #F8FAFC;
+  border: 1px solid var(--border-navy);
   padding: 10px 20px;
   border-radius: 10px;
   font-weight: 600;
-  font-size: 0.925rem;
+  font-size: 0.9rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  cursor: pointer;
   transition: all 0.2s ease;
 }
 .btn-secondary:hover {
-  border-color: var(--primary-light);
-  background-color: rgba(37, 99, 235, 0.08);
+  border-color: var(--gold-500);
+  background: #142242;
+  color: #FFFFFF;
+}
+
+.btn-reset {
+  background: #101B33;
+  color: var(--text-slate-400);
+  border: 1px solid #233760;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.btn-reset:hover {
+  color: #F8FAFC;
+  background: #182647;
+  border-color: #385189;
 }
 
 .btn-danger {
-  background-color: #DC2626;
-  color: #ffffff;
+  background: #EF4444;
+  color: #FFFFFF;
   padding: 8px 16px;
   border-radius: 8px;
   font-weight: 600;
-  border: none;
-  cursor: pointer;
+  font-size: 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
 }
 .btn-danger:hover {
-  background-color: #B91C1C;
+  background: #DC2626;
 }
 
-/* Inputs */
-.input-field {
+/* Luxury Cards */
+.luxury-card {
+  background: #0D162B;
+  border: 1px solid var(--border-navy);
+  border-radius: 18px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+}
+.luxury-card:hover {
+  border-color: rgba(212, 175, 55, 0.6);
+  box-shadow: 0 12px 35px -10px rgba(0, 0, 0, 0.8), 0 0 20px -5px rgba(212, 175, 55, 0.15);
+  transform: translateY(-2px);
+}
+
+/* Fixed Aspect Ratio Photo Container */
+.car-image-container {
   width: 100%;
-  background-color: #0d162b;
-  border: 1px solid var(--border-color);
+  height: 220px;
+  position: relative;
+  overflow: hidden;
+  background-color: #070D19;
+}
+.car-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.4s ease;
+}
+.luxury-card:hover .car-image-container img {
+  transform: scale(1.04);
+}
+
+/* Form Inputs */
+.form-input {
+  width: 100%;
+  background: #09101F;
+  border: 1px solid #1F325C;
   border-radius: 10px;
-  padding: 11px 14px;
-  color: var(--text-main);
+  padding: 12px 16px;
+  color: #F8FAFC;
   font-size: 0.925rem;
   font-family: inherit;
   outline: none;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
-.input-field:focus {
-  border-color: var(--primary-light);
-  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.15);
+.form-input:focus {
+  border-color: var(--gold-500);
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.15);
 }
 
-/* Status Badges */
+/* Gold Accents & Badges */
+.badge-gold {
+  background: rgba(212, 175, 55, 0.15);
+  color: var(--gold-400);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+}
+
 .badge-available {
-  background-color: var(--status-avail-bg);
-  color: var(--status-avail);
+  background: rgba(16, 185, 129, 0.15);
+  color: #34D399;
   border: 1px solid rgba(16, 185, 129, 0.3);
 }
 .badge-sold {
-  background-color: var(--status-sold-bg);
-  color: var(--status-sold);
+  background: rgba(239, 68, 68, 0.15);
+  color: #F87171;
   border: 1px solid rgba(239, 68, 68, 0.3);
 }
 .badge-reserved {
-  background-color: var(--status-reserved-bg);
-  color: var(--status-reserved);
+  background: rgba(245, 158, 11, 0.15);
+  color: #FBBF24;
   border: 1px solid rgba(245, 158, 11, 0.3);
 }
 .badge-maintenance {
-  background-color: var(--status-maint-bg);
-  color: var(--status-maint);
-  border: 1px solid rgba(139, 92, 246, 0.3);
-}
-
-/* Grid & Layout */
-.container {
-  max-width: 1240px;
-  margin: 0 auto;
-  padding: 0 20px;
+  background: rgba(168, 85, 247, 0.15);
+  color: #C084FC;
+  border: 1px solid rgba(168, 85, 247, 0.3);
 }
