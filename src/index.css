@@ -1,0 +1,183 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap');
+
+:root {
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  
+  --bg-dark: #0B1325;
+  --bg-surface: #101B33;
+  --bg-card: #182647;
+  --bg-card-hover: #1E315B;
+  --border-color: #233760;
+  --border-subtle: #1C2B4C;
+  
+  --primary: #2563EB;
+  --primary-light: #38BDF8;
+  --primary-glow: rgba(37, 99, 235, 0.25);
+  
+  --text-main: #F8FAFC;
+  --text-muted: #94A3B8;
+  --text-dim: #64748B;
+  
+  --status-avail: #10B981;
+  --status-avail-bg: rgba(16, 185, 129, 0.15);
+  --status-sold: #EF4444;
+  --status-sold-bg: rgba(239, 68, 68, 0.15);
+  --status-reserved: #F59E0B;
+  --status-reserved-bg: rgba(245, 158, 11, 0.15);
+  --status-maint: #8B5CF6;
+  --status-maint-bg: rgba(139, 92, 246, 0.15);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  min-height: 100vh;
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-dark);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
+
+/* Glass & Card Utilities */
+.glass-panel {
+  background: rgba(16, 27, 51, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-color);
+}
+
+.card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card:hover {
+  border-color: var(--primary);
+  box-shadow: 0 10px 30px -10px var(--primary-glow);
+}
+
+/* Button Utilities */
+.btn-primary {
+  background-color: var(--primary);
+  color: #ffffff;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 0.925rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.btn-primary:hover {
+  background-color: #1D4ED8;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px var(--primary-glow);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 0.925rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.btn-secondary:hover {
+  border-color: var(--primary-light);
+  background-color: rgba(37, 99, 235, 0.08);
+}
+
+.btn-danger {
+  background-color: #DC2626;
+  color: #ffffff;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+}
+.btn-danger:hover {
+  background-color: #B91C1C;
+}
+
+/* Inputs */
+.input-field {
+  width: 100%;
+  background-color: #0d162b;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 11px 14px;
+  color: var(--text-main);
+  font-size: 0.925rem;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.input-field:focus {
+  border-color: var(--primary-light);
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.15);
+}
+
+/* Status Badges */
+.badge-available {
+  background-color: var(--status-avail-bg);
+  color: var(--status-avail);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+.badge-sold {
+  background-color: var(--status-sold-bg);
+  color: var(--status-sold);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+.badge-reserved {
+  background-color: var(--status-reserved-bg);
+  color: var(--status-reserved);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+.badge-maintenance {
+  background-color: var(--status-maint-bg);
+  color: var(--status-maint);
+  border: 1px solid rgba(139, 92, 246, 0.3);
+}
+
+/* Grid & Layout */
+.container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
