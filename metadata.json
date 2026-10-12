@@ -1,0 +1,6 @@
+{
+  "name": "Car Collection",
+  "description": "Professional car collection and dealership management system with real-time analytics, inventory management, filtering, and showroom gallery.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
